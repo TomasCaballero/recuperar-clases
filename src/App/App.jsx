@@ -6,28 +6,32 @@ import './App.css'
 function App() {
   const [clasesArray, setClasesArray] = useState([]);
 
-    
-  const cargarVideos = async () => {
-    await setClasesArray(clases);
-    await console.log(clasesArray);
+  const cargarVideos = () => {
+    setClasesArray(clases);
   }
-  
-  useEffect(()=>{
-    cargarVideos();
-  },[clasesArray])
 
+  useEffect(()=>{
+    setTimeout(()=>{
+      cargarVideos();
+    },2000)
+    console.log(clasesArray);
+  },[clasesArray])
 
   return (
     <div className='layout'>
+      
       <h1>Clases Diplomatura</h1>
       <div className="clasesContainer">
-        
         {
-          clasesArray.map((clase) => {
-            return (
-              <ReactPlayer key={clase} url={clase} controls className='video'/>
-            )
-          })
+          clasesArray === clases ? (
+            clasesArray.map((clase) => {
+              return (
+                <ReactPlayer key={clase.url} url={clase.url} controls className='video'/>
+              )
+            })
+          ) : (
+            <h3 className='mensajeCargando'>Cargando Videos...</h3>
+          )
         }
       </div>
 

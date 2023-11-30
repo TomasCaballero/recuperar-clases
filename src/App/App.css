@@ -23,3 +23,8 @@
 .video{
   width: 100%;
 }
+
+.mensajeCargando{
+  color: rgb(55, 55, 55);
+  padding-top: 5rem;
+}
