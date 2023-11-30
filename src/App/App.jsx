@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {  useEffect, useState } from 'react';
 import { clases } from '../Assets/Videos';
 import ReactPlayer from 'react-player';
 import './App.css'
@@ -6,23 +6,15 @@ import './App.css'
 function App() {
   const [clasesArray, setClasesArray] = useState([]);
 
-  useEffect(()=>{
     
-    const cargarClases = ()=>{
-      setClasesArray(clases);
-    }
-    
-
-    cargarClases();
-  },[])
-  const url = 'https://tyc.utn.centrodeelearning.com/videos.php?id=98808465138';
-  const peticion = fetch(url)
+  const cargarVideos = async () => {
+    await setClasesArray(clases);
+    await console.log(clasesArray);
+  }
   
-  console.log(peticion);
-
-
-
-
+  useEffect(()=>{
+    cargarVideos();
+  },[clasesArray])
 
 
   return (
