@@ -15,9 +15,6 @@ function App() {
       cargarVideos();
     },1000)
 
-    clasesArray.map((clase)=>{
-      console.log(clase.url)
-    })
   },[clasesArray])
 
   return (
