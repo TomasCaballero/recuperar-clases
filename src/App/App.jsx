@@ -7,7 +7,7 @@ function App() {
   const [clasesArray, setClasesArray] = useState([]);
   
   useEffect(()=>{
-    const cargarVideos = async () => {
+    const cargarVideos = () => {
       setClasesArray(clases);
     }
 
@@ -16,9 +16,8 @@ function App() {
     },1000)
 
     clasesArray.map((clase)=>{
-      console.log(clase)
+      console.log(clase.url)
     })
-    console.log(clasesArray);
   },[clasesArray])
 
   return (
@@ -36,6 +35,16 @@ function App() {
           ) : (
             <h3 className='mensajeCargando'>Cargando Videos...</h3>
           )
+        }
+      </div>
+
+      <div className="clasesContainer">
+        {
+          clasesArray.map((claseUrl)=> {
+            return(
+              <a href={claseUrl.url} target="_blank" rel="noopener noreferrer" key={claseUrl.url}>{claseUrl.url}</a>
+            )
+          })
         }
       </div>
 
