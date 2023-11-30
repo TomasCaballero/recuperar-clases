@@ -93,17 +93,16 @@ function App() {
       <h1>Clases Diplomatura</h1>
       <div className="clasesContainer">
         {clasesArray.map((clase) => (
-          <ReactPlayer key={clase.url} url={ruta + clase.url} controls className='video' />
+          <div key={clase.url} className='videoContainer'>
+            <ReactPlayer  url={ruta + clase.url} controls className='video' />
+            <a href={ruta + clase.url} target="_blank" rel="noopener noreferrer" key={ruta + clase.url}>
+            {ruta + clase.url}
+          </a>
+          </div>
+          
         ))}
       </div>
 
-      <div className="clasesContainer">
-        {clasesArray.map((claseUrl) => (
-          <a href={ruta + claseUrl.url} target="_blank" rel="noopener noreferrer" key={ruta + claseUrl.url}>
-            {ruta + claseUrl.url}
-          </a>
-        ))}
-      </div>
     </div>
   );
 }
