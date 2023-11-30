@@ -5,21 +5,25 @@ import './App.css'
 
 function App() {
   const [clasesArray, setClasesArray] = useState([]);
-
-  const cargarVideos = () => {
-    setClasesArray(clases);
-  }
-
+  
   useEffect(()=>{
+    const cargarVideos = async () => {
+      setClasesArray(clases);
+    }
+
     setTimeout(()=>{
       cargarVideos();
-    },2000)
+    },1000)
+
+    clasesArray.map((clase)=>{
+      console.log(clase)
+    })
     console.log(clasesArray);
   },[clasesArray])
 
   return (
     <div className='layout'>
-      
+
       <h1>Clases Diplomatura</h1>
       <div className="clasesContainer">
         {
