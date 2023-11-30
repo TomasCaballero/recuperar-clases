@@ -1,4 +1,4 @@
 [[redirects]]
-from = "/https:zoom-fepp.s3.amazonaws.com/98808465138/98808465138/*"
-to = "/https:zoom-fepp.s3.amazonaws.com/98808465138/98808465138/:splat"
+from = "/*"
+to = "/index.html"
 status = 200
