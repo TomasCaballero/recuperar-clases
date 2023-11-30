@@ -1,110 +1,55 @@
-// import {  useEffect, useState } from 'react';
-// import { clases } from '../Assets/Videos';
-// import ReactPlayer from 'react-player';
-// import './App.css'
-
-// function App() {
-//   const [clasesArray, setClasesArray] = useState([]);
-
-//   useEffect(()=>{
-//     const cargarVideos = () => {
-//       setClasesArray(clases);
-//     }
-
-//     setTimeout(()=>{
-//       cargarVideos();
-//     },1000)
-
-//   },[clasesArray])
-
-//   return (
-//     <div className='layout'>
-
-//       <h1>Clases Diplomatura</h1>
-//       <div className="clasesContainer">
-//         {
-//           clasesArray === clases ? (
-//             clasesArray.map((clase) => {
-//               return (
-//                 <ReactPlayer key={clase.url} url={clase.url} controls className='video' />
-//               )
-//             })
-//           ) : (
-//             <h3 className='mensajeCargando'>Cargando Videos...</h3>
-//           )
-//         }
-//       </div>
-
-//       <div className="clasesContainer">
-//         {
-//           clasesArray.map((claseUrl)=> {
-//             return(
-//               <a href={claseUrl.url} target="_blank" rel="noopener noreferrer" key={claseUrl.url}>{claseUrl.url}</a>
-//             )
-//           })
-//         }
-//       </div>
-
-//     </div>
-//   )
-// }
-
-// export default App
-
-import { useEffect, useState } from 'react';
-import { clases } from '../Assets/Videos';
+import {  useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
-import './App.css';
+import './App.css'
+import { clases } from '../../public/Assets/Videos';
 
 function App() {
   const [clasesArray, setClasesArray] = useState([]);
 
-  useEffect(() => {
+  const ruta = "https:zoom-fepp.s3.amazonaws.com/98808465138/98808465138"
+
+
+  useEffect(()=>{
     const cargarVideos = () => {
       setClasesArray(clases);
-    };
+    }
 
-    setTimeout(() => {
+    setTimeout(()=>{
       cargarVideos();
-    }, 1000);
-  }, [clasesArray]);
+    },1000)
+
+  },[clasesArray])
 
   return (
-    <div className="layout">
+    <div className='layout'>
+
       <h1>Clases Diplomatura</h1>
-
       <div className="clasesContainer">
-        {clasesArray === clases ? (
-          clasesArray.map((clase) => (
-            <ReactPlayer
-              key={clase.url}
-              url={clase.url}
-              controls
-              className="video"
-              headers={(range) => ({
-                'Content-Range': range,
-              })}
-            />
-          ))
-        ) : (
-          <h3 className="mensajeCargando">Cargando Videos...</h3>
-        )}
+        {
+          clasesArray === clases ? (
+            clasesArray.map((clase) => {
+              return (
+                <ReactPlayer key={clase.url} url={ruta+clase.url} controls className='video' />
+              )
+            })
+          ) : (
+            <h3 className='mensajeCargando'>Cargando Videos...</h3>
+          )
+        }
       </div>
 
       <div className="clasesContainer">
-        {clasesArray.map((claseUrl) => (
-          <a
-            href={claseUrl.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            key={claseUrl.url}
-          >
-            {claseUrl.url}
-          </a>
-        ))}
+        {
+          clasesArray.map((claseUrl)=> {
+            return(
+              <a href={ruta+claseUrl.url} target="_blank" rel="noopener noreferrer" key={ruta+claseUrl.url}>{ruta+claseUrl.url}</a>
+            )
+          })
+        }
       </div>
+
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
