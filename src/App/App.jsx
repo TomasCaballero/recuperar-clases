@@ -33,9 +33,6 @@ function App() {
         {
           clasesArray.map((clase) => {
             return (
-              // <video className='video' controls key={clase}>
-              //   <source src={clase} type="video/mp4" />
-              // </video>
               <ReactPlayer key={clase} url={clase} controls className='video'/>
             )
           })
